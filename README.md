@@ -2,7 +2,6 @@
 A library for Collections with Versions, keeping track of the full Collection History, allowing for operations to get the state of a Collection during a previous Version.
 
 # Usage
-
 ## VersionedDictionary
 ### Create your dictionary
 ```csharp
@@ -20,4 +19,12 @@ dictionary.Add("key", "value2");
 ```csharp
 dictionary["key"]; // "value2"
 dictionary[1, "key"]; // "value"
-``` 
+```
+
+### Get the state of the dictionary at a specific version, flattened.
+```csharp
+dictionary.GetDictionary(1); // { "key", "value" }
+dictionary.GetDictionary(2); // { }
+dictionary.GetDictionary(3); // { "key", "value2" }
+dictionary.GetDictionary();  // { "key", "value2" }
+```
